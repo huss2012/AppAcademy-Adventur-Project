@@ -25,7 +25,7 @@ class Player {
             console.log(`${this.name} is not carrying anything.`);
         } else {
             console.log(`${this.name} is carrying:`);
-            for (let i = 0 ; i < this.items.length ; i++) {
+            for (let i = 0; i < this.items.length; i++) {
                 console.log(`  ${this.items[i].name}`);
             }
         }
@@ -33,13 +33,28 @@ class Player {
 
     takeItem(itemName) {
 
-        // Fill this in
+        for (let i = 0; i < this.currentRoom.items.length; i++){
+            if (this.currentRoom.items[i]["name"] === itemName) {
+                // console.log(this.items);
+                // console.log(this.currentRoom.items[i]["name"]);
+                this.items.push(this.currentRoom.items[i]);
+                this.currentRoom.items.pop();
+                // console.log(this.items);
+            }
+        }
 
     }
 
     dropItem(itemName) {
 
         // Fill this in
+        for (let i = 0; i < this.items.length; i++){
+            if (this.items[i]["name"] === itemName) {
+                this.currentRoom.items.push(this.items[i]);
+                this.items.pop();
+            }
+        }
+
     }
 
     eatItem(itemName) {
@@ -50,9 +65,17 @@ class Player {
     getItemByName(name) {
 
         // Fill this in
+        for (let i = 0; i < this.items.length; i++) {
+            let itemName = this.items[i]["name"];
+            if (itemName === name) {
+                return this.items[i];
+            }
+        }
     }
 }
 
+
+
 module.exports = {
-  Player,
+    Player,
 };
