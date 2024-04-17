@@ -1,3 +1,6 @@
+const food = require("./food");
+const Food = food.Food;
+
 class Player {
 
     constructor(name, startingRoom) {
@@ -59,6 +62,11 @@ class Player {
 
     eatItem(itemName) {
         // Fill this in
+        for (let i = 0; i < this.items.length; i++){
+            if (this.items[i]["name"] === itemName && this.items[i] instanceof Food) {
+                this.items.pop();
+            }
+        }
 
     }
 
