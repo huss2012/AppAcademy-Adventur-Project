@@ -42,10 +42,13 @@ class World {
 
             let itemData = itemList[i];
             let newItem;
-
-            if (itemData.isFood) {
+            console.log(itemData["name"]);
+            if (itemData instanceof Food) {
                 console.log("ERROR: Food not supported yet.");
                 // Fill this in
+                if (itemData["name"] === "sandwich") {
+                    newItem = itemData;
+                }
                 return;
             } else {
                 newItem = new Item(itemData.name, itemData.description);
