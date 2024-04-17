@@ -46,10 +46,16 @@ class Room {
     getItemByName(name) {
 
         // Fill this in
+        for (let i = 0; i < this.items.length; i++){
+            let itemName = this.items[i]["name"];
+            if (itemName === name) {
+                return this.items[i];
+            }
+        }
     }
 
 }
 
 module.exports = {
-  Room,
+    Room,
 };
